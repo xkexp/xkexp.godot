@@ -8,6 +8,7 @@ const KxMessage = preload("res://scripts/kx_messages.gd")
 
 var client = StreamPeerTCP.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	client.connect_to_host("127.0.0.1", 8087)
