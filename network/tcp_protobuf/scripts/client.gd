@@ -12,6 +12,7 @@ var client = StreamPeerTCP.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	client.connect_to_host("127.0.0.1", 8087)
+	client.big_endian = true
 	if client.is_connected_to_host():
 		var message := KxMessage.TestMessage.new()
 		message.set_foo(100)

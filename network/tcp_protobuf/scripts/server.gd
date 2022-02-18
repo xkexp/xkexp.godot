@@ -15,7 +15,9 @@ func _ready():
 func _process(delta):
 	# 如果有新的客户端连接过来,则保存起来
 	if server.is_connection_available():
-		clients.push_back(server.take_connection())
+		var client := server.take_connection()
+		client.big_endian = true
+		clients.push_back(client)
 	
 	for c in clients:
 		var client :StreamPeerTCP = c as StreamPeerTCP
