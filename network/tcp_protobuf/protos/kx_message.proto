@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+// 请求消息
+message Request {
+  /// 头部
+  // 消息号
+  int32 message_id = 1;
+
+  // 消息体长度
+  int32 body_length = 2;
+
+  // 消息体类型ID
+  int32 body_type_id = 3;
+
+  /// 内容
+  // 消息体
+  bytes body = 10;
+}
+
+
+// 响应消息
+message Response {
+  /// 头部
+  // 消息号
+  int32 message_id = 1;
+
+  // 消息体长度
+  int32 body_length = 2;
+
+  // 消息体类型ID
+  int32 body_type_id = 3;
+
+  // 错误号
+  int32 error_code = 4;
+
+  /// 内容
+  // 消息体
+  bytes body = 10;
+}
+
+
+/// 消息
+
+// 测试消息
+message TestMessage {
+  int32 foo = 1;
+  string bar = 2;
+}
