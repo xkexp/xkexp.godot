@@ -18,11 +18,16 @@ func _ready():
 		message.set_foo(100)
 		message.set_bar("hello test!")
 		var message_bytes :PoolByteArray = message.to_bytes()
-		
+
 		print(TAG, 'message_length: ', message_bytes.size())
 		print(TAG, 'message_bytes: ', message_bytes)
-		
+
 		# 写入消息长度
 		client.put_32(message_bytes.size())
 		# 写入消息
 		client.put_partial_data(message_bytes)
+
+
+func _exit_tree():
+	conn.disconnect_from_host()
+	print(TAG, '连接已关闭.')
