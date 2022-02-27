@@ -29,5 +29,5 @@ func _ready():
 
 
 func _exit_tree():
-	conn.disconnect_from_host()
+	client.disconnect_from_host()
 	print(TAG, '连接已关闭.')

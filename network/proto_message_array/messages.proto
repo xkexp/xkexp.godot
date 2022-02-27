@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "xkexp.DotNetty.MessageArray";
+
+message MessageHead {
+  int32 body_length = 1;
+
+  int32 body_type_id = 2;
+}
+
+message MessageHeads {
+  repeated MessageHead heads = 1;
+}
+
+message Test1Message {
+  int32 t1 = 1;
+}
+
+message Test2Message {
+  string t2 = 1;
+}
