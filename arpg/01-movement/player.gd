@@ -12,13 +12,8 @@ var velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	var input_direction = _get_input_direction()
-	var acceleration = ACCELERATION * delta
-	# 无操作
-	if input_direction != Vector2.ZERO:
-		velocity = velocity.move_toward(input_direction * MAX_SPEED, acceleration)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, acceleration)
-	velocity = move_and_slide(velocity)
+	velocity = input_direction * MAX_SPEED
+	move_and_slide(velocity)
 
 
 func _get_input_direction() -> Vector2:
