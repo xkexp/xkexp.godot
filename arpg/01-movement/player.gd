@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 const TAG = '[Player]: '
 # 最大速度
-const MAX_SPEED = 450
+const MAX_SPEED = 500
 # 加速度/摩擦力
-const ACCELERATION = 500
+const ACCELERATION = MAX_SPEED * 5
 
 # 速度
 var velocity = Vector2.ZERO
@@ -12,8 +12,9 @@ var velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	var input_direction = _get_input_direction()
-	velocity = input_direction * MAX_SPEED
-	move_and_slide(velocity)
+	#velocity = input_direction * MAX_SPEED
+	velocity = velocity.move_toward(input_direction * MAX_SPEED, ACCELERATION * delta)
+	velocity = move_and_slide(velocity)
 
 
 func _get_input_direction() -> Vector2:
