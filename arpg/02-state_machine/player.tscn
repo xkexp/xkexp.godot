@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/player/shadow.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/body.png" type="Texture" id=2]
-[ext_resource path="res://01-movement/player.gd" type="Script" id=3]
+[ext_resource path="res://02-state_machine/player.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 15 )

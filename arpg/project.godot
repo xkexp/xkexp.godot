@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Arpg"
-run/main_scene="res://01-movement/movement.tscn"
+run/main_scene="res://02-state_machine/main.tscn"
 config/icon="res://icon.png"
 
 [display]
