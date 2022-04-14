@@ -5,16 +5,23 @@ extends Node
 signal state_changed(current_state)
 
 
+const TAG = '[StateMachine]: '
 const State = preload("./state.gd")
 
 
 var current_state: State
+var states_map = {}
 var _active = false setget set_active
 
 
 func _ready():
-	for child in get_children():
+	assert(get_child_count() > 0, "一个State都没有")
+	var children = get_children()
+	for child in children:
 		child.connect('finished', self, '_change_state')
+	set_active(true)
+	current_state = children[0]
+	current_state.enter()
 
 
 func _unhandled_input(event):
@@ -34,9 +41,12 @@ func set_active(value):
 		current_state = null
 
 
-func _change_state():
+func _change_state(state_name: String):
+	#print(TAG, '_change_state to ', state_name, ', _active: ', _active)
 	if not _active:
 		return
 	current_state.exit()
+	current_state = states_map[state_name]
 
 	emit_signal("state_changed", current_state)
+	current_state.enter()
