@@ -16,14 +16,14 @@ var _active = false setget set_active
 
 
 func _ready():
-	var input = KsInput.new()
-	input.register_controls()
-	add_child(input)
-	
 	assert(get_child_count() > 0, "一个State都没有")
 	var children = get_children()
 	for child in children:
 		child.connect('finished', self, '_change_state')
+	
+	#print(TAG, '_ready')
+	add_child(KsInput.new())
+	
 	set_active(true)
 	current_state = children[0]
 	current_state.enter()
